@@ -1,26 +1,24 @@
-import React from 'react/addons'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import reactMixin from 'react-mixin'
-import * as actionCreators from '../actions'
-
-console.log(actionCreators)
+import React from 'react/addons';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import reactMixin from 'react-mixin';
+import * as actionCreators from '../actions';
 
 export class LoginView extends React.Component {
 
   constructor(props) {
-    super(props)
-    const redirectRoute = this.props.location.query.next || '/login'
+    super(props);
+    const redirectRoute = this.props.location.query.next || '/login';
     this.state = {
       email: '',
       password: '',
       redirectTo: redirectRoute
-    }
+    };
   }
 
   login(e) {
-    e.preventDefault()
-    this.props.actions.loginUser(this.state.email, this.state.password, this.state.redirectTo)
+      e.preventDefault();
+      this.props.actions.loginUser(this.state.email, this.state.password, this.state.redirectTo);
   }
 
   render () {
@@ -30,12 +28,12 @@ export class LoginView extends React.Component {
         <p>Hint: hello@test.com / test</p>
         {this.props.statusText ? <div className='alert alert-info'>{this.props.statusText}</div> : ''}
         <form role='form'>
-          <div className='form-group'>
+        <div className='form-group'>
             <input type='text'
               className='form-control input-lg'
               valueLink={this.linkState('email')}
               placeholder='Email' />
-          </div>
+            </div>
           <div className='form-group'>
             <input type='password'
               className='form-control input-lg'
@@ -46,21 +44,21 @@ export class LoginView extends React.Component {
             className='btn btn-lg'
             disabled={this.props.isAuthenticating}
             onClick={this.login.bind(this)}>Submit</button>
-        </form>
-      </div>
-    )
+      </form>
+    </div>
+    );
   }
 }
 
-reactMixin(LoginView.prototype, React.addons.LinkedStateMixin)
+reactMixin(LoginView.prototype, React.addons.LinkedStateMixin);
 
 const mapStateToProps = (state) => ({
   isAuthenticating   : state.auth.isAuthenticating,
   statusText         : state.auth.statusText
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(actionCreators, dispatch)
-})
+  actions : bindActionCreators(actionCreators, dispatch)
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
