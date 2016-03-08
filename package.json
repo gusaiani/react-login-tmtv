@@ -1,0 +1,21 @@
+{
+  "name": "react-auth",
+  "version": "1.0.0",
+  "description": "React Auth",
+  "main": "index.js",
+  "scripts": {
+    "compile": "NODE_ENV=production webpack",
+    "start": "NODE_ENV=development node server.js",
+    "test": "npm run mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gusaiani/react-login-tmtv.git"
+  },
+  "author": "Gustavo Saiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gusaiani/react-login-tmtv/issues"
+  },
+  "homepage": "https://github.com/gusaiani/react-login-tmtv#readme"
+}
