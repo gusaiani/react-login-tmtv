@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {logoutAndRedirect} from '../actions'
 
-import '../styles/core.scss'
-
 @connect((state) => {
   return {
    isAuthenticated: state.auth.isAuthenticated
