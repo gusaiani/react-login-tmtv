@@ -58,13 +58,8 @@ const webpackConfig = {
         }
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          'autoprefixer?browsers=last 2 version',
-          'sass-loader'
-        ]
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
       },
       /* eslint-disable */
       { test: /\.woff(\?.*)?$/,  loader: "url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff" },
