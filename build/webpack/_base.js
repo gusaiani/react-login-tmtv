@@ -13,6 +13,11 @@ const webpackConfig = {
     ],
     vendor: config.get('vendor_dependencies')
   },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+  },
   output: {
     filename: '[name].[hash].js',
     path: paths.project(config.get('dir_dist')),
