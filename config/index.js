@@ -1,8 +1,6 @@
 import path     from 'path'
 import { argv } from 'yargs'
-import dotenv   from 'dotenv'
 
-dotenv.load()
 const config = new Map()
 
 // ------------------------------------
