@@ -13,16 +13,16 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.map(loader => {
   return loader
 })
 
-webpackConfig.plugins.push(
-  new ExtractTextPlugin('[name].[contenthash].css'),
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    compress : {
-      'unused': true,
-      'dead_code': true,
-      'warnings': false
-    }
-  })
-)
+// webpackConfig.plugins.push(
+//   new ExtractTextPlugin('[name].[contenthash].css'),
+//   new webpack.optimize.UglifyJsPlugin({
+//     minimize: true,
+//     compress : {
+//       'unused': true,
+//       'dead_code': true,
+//       'warnings': false
+//     }
+//   })
+// )
 
 export default webpackConfig
