@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
 
 const app = new(require('express'))()
-const port = 3000
+const port = 5000
 
 const config = require('./webpack.config')
 const compiler = webpack(config)
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html')
 })
 
-app.listen(port, (error) => {
+app.listen((process.env.PORT || port), (error) => {
   if (error) {
     console.error(error)
   } else {
