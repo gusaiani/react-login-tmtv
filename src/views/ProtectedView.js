@@ -20,10 +20,9 @@ export class ProtectedView extends React.Component {
         {this.props.isFetching === true
           ? <h1>Loading data...</h1>
           : <div>
-            <h1>Welcome back,
-              {this.props.userName}!</h1>
-            <h3>{this.props.data}</h3>
-          </div>
+              <h1>Welcome back, {this.props.userName}!</h1>
+              <h3>{this.props.data}</h3>
+            </div>
         }
       </div>
     )

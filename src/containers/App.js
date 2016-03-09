@@ -19,7 +19,7 @@ export default class CoreLayout extends React.Component {
     return (
       <div>
         <header>
-          <Link to="/">For TelemetryTV from @gusaiani</Link>
+          <Link to="/"><b>TelemetryTV</b> | @gusaiani</Link>
           <nav>
             <Link to="/protected">Protected Content</Link>
             {isAuthenticated

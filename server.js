@@ -37,7 +37,7 @@ app.get('/getData/', (req, res) => {
     try {
       let decoded = jwt.verify(token.replace('Bearer ', ''), 'secret-key')
       res.status(200)
-        .json({data: 'Valid JWT found.'})
+        .json({data: 'Valid credentials found.'})
     } catch (e) {
       res.sendStatus(401)
     }
