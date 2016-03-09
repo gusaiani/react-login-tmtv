@@ -6,6 +6,7 @@
   "scripts": {
     "compile": "NODE_ENV=production webpack",
     "start": "NODE_ENV=development node server.js",
+    "start-server": "NODE_ENV=production node server.js",
     "mocha": "mocha --recursive --compilers js:babel-core/register",
     "mocha:watch": "npm run mocha -- --watch",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive --compilers js:babel/register --colors --reporter dot test/",
