@@ -11,7 +11,7 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive --compilers js:babel/register --colors --reporter dot test/",
     "test": "npm run mocha",
     "dist": "NODE_ENV=production webpack -p --progress",
-    "postinstall": "npm run dist"
+    "postinstall": "npm run compile"
   },
   "repository": {
     "type": "git",
