@@ -14,7 +14,7 @@ config.set('dir_dist', 'dist')
 config.set('dir_test', 'tests')
 
 config.set('webpack_host',  'localhost')
-config.set('webpack_port',  3000) // eslint-disable-line
+config.set('webpack_port',  (process.env.NODE_ENV || 5000)) // eslint-disable-line
 
 config.set('vendor_dependencies', [
   'history',
