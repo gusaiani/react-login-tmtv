@@ -1,7 +1,14 @@
 import React from 'react/addons'
+import {findDOMNode} from 'react-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import reactMixin from 'react-mixin'
+
+import Joi from 'joi'
+import validation from 'react-validation-mixin'
+import strategy from 'joi-validation-strategy'
+import classnames from 'classnames'
+
 import * as actionCreators from '../actions'
 
 export class LoginView extends React.Component {
@@ -14,11 +21,51 @@ export class LoginView extends React.Component {
       password: '',
       redirectTo: redirectRoute
     }
+
+    this.validatorTypes = {
+      email: Joi.string().email().required().label('Email'),
+      password: Joi.string().min(8).label('Password')
+    }
+
+    this.getValidatorData = this.getValidatorData.bind(this)
+    this.renderHelpText = this.renderHelpText.bind(this)
+    this.getClasses = this.getClasses.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
-  login(e) {
-    e.preventDefault()
-    this.props.actions.loginUser(this.state.email, this.state.password, this.state.redirectTo)
+  login() {
+    const {email, password, redirectTo} = this.state
+    this.props.actions.loginUser(email, password, redirectTo)
+  }
+
+  onSubmit(event) {
+    event.preventDefault()
+    const onValidate = (error) => {
+      if (error) {
+        //form has errors; do not submit
+      } else {
+        this.login()
+      }
+    }
+    this.props.validate(onValidate)
+  }
+
+  getClasses(field) {
+    return classnames({
+      'form-group': true,
+      'has-error': !this.props.isValid(field)
+    })
+  }
+
+  getValidatorData() {
+    return {
+      email: findDOMNode(this.refs.email).value,
+      password: findDOMNode(this.refs.password).value
+    }
+  }
+
+  renderHelpText(message) {
+    return (<span className='help-block'>{message}</span>)
   }
 
   render () {
@@ -26,16 +73,21 @@ export class LoginView extends React.Component {
       <div>
         <h3>Please Login</h3>
         {this.props.statusText ? <div className='alert alert-info'>{this.props.statusText}</div> : ''}
-        <form role='form'>
+        <form role='form' onSubmit={this.onSubmit}>
           <input type='text'
+            ref='email'
             valueLink={this.linkState('email')}
-            placeholder='Email' />
+            placeholder='Email'
+            onBlur={this.props.handleValidation('email')} />
+          {this.renderHelpText(this.props.getValidationMessages('email'))}
           <input type='password'
+            ref='password'
             valueLink={this.linkState('password')}
-            placeholder='Password' />
+            placeholder='Password'
+            onBlur={this.props.handleValidation('password')} />
+          {this.renderHelpText(this.props.getValidationMessages('password'))}
           <button type='submit'
-            disabled={this.props.isAuthenticating}
-            onClick={this.login.bind(this)}>Submit ›</button>
+            disabled={this.props.isAuthenticating}>Submit ›</button>
         </form>
       </div>
     )
@@ -53,4 +105,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actionCreators, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(validation(strategy)(LoginView))

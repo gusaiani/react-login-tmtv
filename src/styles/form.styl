@@ -10,17 +10,37 @@ form
     margin-bottom 15px
     padding 10px 15px
     width calc(100% - 30px)
+    &:focus
+      background rgba(255,255,255,.2)
+      outline none
   button
     background transparent
     border 1px solid white
     border-radius 2.5em
     color white
+    cursor pointer
     float right
     font-weight 700
     padding 10px 15px
     text-transform uppercase
     width 40%
-
+    &:hover
+      background rgba(255,255,255,0.15)
+    &:focus
+      outline none
+  span.help-block
+    border-radius 4px
+    display block
+    margin -8px 0 10px
+    padding 3px 0 4px
+    &:empty
+      display none
+    span
+      clear both
+      color #E85600
+      display block
+      font-size 12px
+      margin 4px
 div.alert
   background #e4bdf0
   border-radius 4px
