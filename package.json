@@ -9,7 +9,9 @@
     "mocha": "mocha --recursive --compilers js:babel-core/register",
     "mocha:watch": "npm run mocha -- --watch",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive --compilers js:babel/register --colors --reporter dot test/",
-    "test": "npm run mocha"
+    "test": "npm run mocha",
+    "dist": "NODE_ENV=production webpack -p --progress",
+    "postinstall": "npm run dist"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,7 @@
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^1.0.0",
     "stylus-loader": "^1.5.1",
+    "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1",
     "yargs": "^3.18.0"
