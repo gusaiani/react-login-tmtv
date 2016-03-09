@@ -10,7 +10,7 @@
 ````
 npm start
 ````
-Then visit `localhost:3000` in your browser.
+Then visit `localhost:5000` in your browser.
 
 ### Testing
 ```
